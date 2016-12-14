@@ -1,0 +1,7 @@
+__version__ = "Version 201611.22"
+import getopt, sys, os, datetime, stat
+from PIL import Image, ImageFont, ImageDraw
+from PyQt5 import QtCore, QtGui
+import ui_energy
+from math import sqrt, asin, atan, tan, sin
+

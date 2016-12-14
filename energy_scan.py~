@@ -1,0 +1,214 @@
+__version__ = "Version 201611.22"
+import sys
+#==============================================================================
+# from PIL import Image, ImageFont, ImageDraw
+#==============================================================================
+
+#==============================================================================
+# from PyQt5.QtWidgets import QApplication
+#==============================================================================
+import getopt, sys, os, datetime, stat
+from PIL import Image, ImageFont, ImageDraw
+from PyQt5.QtWidgets import QApplication, QMainWindow
+from ui_energy import Ui_MainWindow
+from math import sqrt, asin, atan, tan, sin
+
+
+#==============================================================================
+# class MainWindow(QtWidgets.QMainWindow, UI.MainUI.Ui_MainWindow):  
+#==============================================================================
+
+
+
+    
+def inputtool(self):
+    
+    try :
+        self.start1=float(MainWin.edt_start1.text())/1000
+    except ValueError:
+            MainWin.statusbar.showMessage("1st start wrong formate")
+            return "false"
+    try :
+        self.end1=float(MainWin.edt_end1.text())/1000
+    except ValueError:
+            MainWin.statusbar.showMessage("1st end wrong formate")
+            return "false"
+    try :
+        self.step1=float(MainWin.step1.text())/1000
+        if self.step1==0:
+            MainWin.statusbar.showMessage("step value couldn't be zero")
+            return "false"
+    except ValueError:
+            MainWin.statusbar.showMessage("1st step wrong formate")
+            return "false"
+    try :
+        self.start2=float(MainWin.edt_start2.text())/1000
+    except ValueError:
+            MainWin.statusbar.showMessage("2nd start wrong formate")
+            return "false"
+    try :
+        self.end2=float(MainWin.edt_end2.text())/1000
+    except ValueError:
+            MainWin.statusbar.showMessage("2nd end wrong formate")
+            return "false"
+    try :
+        
+        self.step2=float(MainWin.edt_step2.text())/1000
+        if self.step2==0:
+            MainWin.statusbar.showMessage("step value couldn't be zero")
+            return "false"
+    except ValueError:
+            MainWin.statusbar.showMessage("2nd step wrong formate")
+            return "false"
+    try :
+        self.start3=float(MainWin.edt_start3.text())/1000
+    except ValueError:
+            MainWin.statusbar.showMessage("3rd start wrong formate")
+            return "false"
+    try :
+        self.end3=float(MainWin.edt_end3.text())/1000
+    except ValueError:
+            MainWin.statusbar.showMessage("3rd end wrong formate")
+            return "false"
+    try :
+        self.step3=float(MainWin.edt_step3.text())/1000
+        if self.step3==0:
+            MainWin.statusbar.showMessage("step value couldn't be zero")
+            return "false"
+    except ValueError:
+            MainWin.statusbar.showMessage("3rd step wrong formate")
+            return "false"
+    try :
+        self.start4=float(MainWin.edt_start4.text())/1000
+    except ValueError:
+            MainWin.statusbar.showMessage("4th start wrong formate")
+            return "false"
+    try :
+        self.end4=float(MainWin.edt_end4.text())/1000
+    except ValueError:
+            MainWin.statusbar.showMessage("4th end wrong formate")
+            return "false" 
+    try :
+        self.step4=float(MainWin.edt_step4.text())/1000
+        if self.step4==0:
+            MainWin.statusbar.showMessage("step value couldn't be zero")
+            return "false"
+    except ValueError:
+            MainWin.statusbar.showMessage("4th step wrong formate")
+            return "false"
+    try :
+        self.wait1=float(MainWin.edt_wait1.text())
+    except ValueError:
+            MainWin.statusbar.showMessage("1st wait wrong formate")
+            return "false"
+    try :
+        self.wait2=float(MainWin.edt_wait2.text())
+    except ValueError:
+            MainWin.statusbar.showMessage("2nd wait wrong formate")
+            return "false"
+    try :
+        self.wait3=float(MainWin.edt_wait3.text())
+    except ValueError:
+            MainWin.statusbar.showMessage("3rd wait wrong formate")
+            return "false"
+    try :
+        self.wait4=float(MainWin.edt_wait4.text())
+    except ValueError:
+            MainWin.statusbar.showMessage("4th wait wrong formate")
+            return "false"
+    
+    MainWin.statusbar.showMessage("")
+    return "true"
+def datachange(self):
+    
+        if MainWin.edt_start1.text()==None or MainWin.edt_start1.text()=='':
+            MainWin.edt_start1.setText='0'
+        if MainWin.edt_start2.text()==None or MainWin.edt_start2.text()=='':
+            MainWin.edt_start2.setText='0'
+        if MainWin.edt_start3.text()==None or MainWin.edt_start3.text()=='':
+            MainWin.edt_start3.setText='0'
+        if MainWin.edt_start4.text()==None or MainWin.edt_start4.text()=='':
+            MainWin.edt_start4.setText='0'
+        if MainWin.edt_end1.text()==None or MainWin.edt_end1.text()=='':
+            MainWin.edt_end1.setText='0'
+        if MainWin.edt_end2.text()==None or MainWin.edt_end2.text()=='':
+            MainWin.edt_end2.setText='0'
+        if MainWin.edt_end3.text()==None or MainWin.edt_end3.text()=='':
+            MainWin.edt_end3.setText='0'
+        if MainWin.edt_end4.text()==None or MainWin.edt_end4.text()=='':
+            MainWin.edt_end4.setText='0'
+        if MainWin.edt_step1.text()==None or MainWin.edt_step1.text()=='':
+            MainWin.edt_step1.setText='0'
+        if MainWin.edt_step2.text()==None or MainWin.edt_step2.text()=='':
+            MainWin.edt_step2.setText='0'
+        if MainWin.edt_step3.text()==None or MainWin.edt_step3.text()=='':
+            MainWin.edt_step3.setText='0'
+        if MainWin.edt_step4.text()==None or MainWin.edt_step4.text()=='':
+            MainWin.edt_step4.setText='0'
+        if MainWin.edt_wait1.text()==None or MainWin.edt_wait1.text()=='':
+            MainWin.edt_wait1.setText='0'
+        if MainWin.edt_wait2.text()==None or MainWin.edt_wait2.text()=='':
+            MainWin.edt_wait2.setText='0'
+        if MainWin.edt_wait3.text()==None or MainWin.edt_wait3.text()=='':
+            MainWin.edt_wait3.setText='0'
+        if MainWin.edt_wait4.text()==None or MainWin.edt_wait4.text()=='':
+            MainWin.edt_wait4.setText='0'
+        isformat=input()
+        if isformat=="true":
+            self.n1=(self.end1-self.start1)//self.step1
+            self.end1=self.start1+self.n1*self.step1
+            MainWin.edt_end1.setText=str(self.end1*1000)
+            self.n2=(self.end2-self.start2)//self.step2
+            self.end2=self.start2+self.n2*self.step2
+            MainWin.edt_end2.setText=str(self.end2*1000)
+            self.n3=(self.end3-self.start3)//self.step3
+            self.end3=self.start3+self.n3*self.step3
+            MainWin.edt_end3.setText=str(self.end3*1000)
+            self.n4=(self.end4-self.start4)//self.step4
+            self.end4=self.start4+self.n4*self.step4
+            MainWin.edt_end4.setText=str(self.end4*1000)
+            
+        
+        
+    
+
+#==============================================================================
+def scan():
+    inputtool()
+    datachange()
+    
+#==============================================================================
+#==============================================================================
+#         step1
+#==============================================================================
+           
+
+
+
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)    
+    uiWin=QMainWindow()
+    MainWin=Ui_MainWindow()
+    
+    MainWin.setupUi(uiWin)
+    
+    
+ 
+#==============================================================================
+#     MainWin.btn_start.clicked.connect(scan)
+#==============================================================================
+#==============================================================================
+#     MainWin.edt_wait1.textChanged.connect(datachange())
+#==============================================================================
+   
+     
+     
+     
+     
+     
+    
+     
+    sys.exit( app.exec_() )
+    
